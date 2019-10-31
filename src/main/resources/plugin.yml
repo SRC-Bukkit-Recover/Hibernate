@@ -1,0 +1,10 @@
+name: Hibernate
+version: ${project.version}
+main: com.woutwoot.hibernate.Main
+api-version: 1.13
+authors: [woutwoot]
+commands:
+  hibernate:
+    description: Command that will toggle hibernate.
+    permission: hibernate.toggle
+    permission-message: You do not have the required permission (<permission>)
