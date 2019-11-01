@@ -45,22 +45,22 @@ public class Main extends JavaPlugin {
 
       @Override
       public void run() {
-        if (Bukkit.getServer().getOnlinePlayers().isEmpty() && Main.this.enabled) {
-          if (this.firstRun) {
-            for (final World w : Bukkit.getWorlds()) {
-              for (final Chunk c : w.getLoadedChunks()) {
-                c.unload(true);
-              }
+        if (!(Bukkit.getServer().getOnlinePlayers().isEmpty() && Main.this.enabled)) {
+          return;
+        }
+        if (this.firstRun) {
+          for (final World w : Bukkit.getWorlds()) {
+            for (final Chunk c : w.getLoadedChunks()) {
+              c.unload(true);
             }
           }
-          try {
-            Thread.sleep(1000L);
-            this.firstRun = false;
-          } catch (Exception ignored) {
-            // IGNORED
-          }
-        } else {
-          this.firstRun = true;
+          this.firstRun = false;
+        }
+        try {
+          Thread.sleep(1000L);
+          this.firstRun = false;
+        } catch (Exception ignored) {
+          // IGNORED
         }
       }
     }).runTaskTimer(this, 0, 1);
