@@ -46,6 +46,7 @@ public class Main extends JavaPlugin {
       @Override
       public void run() {
         if (!(Bukkit.getServer().getOnlinePlayers().isEmpty() && Main.this.enabled)) {
+          this.firstRun = true;
           return;
         }
         if (this.firstRun) {
